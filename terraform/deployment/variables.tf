@@ -1,5 +1,9 @@
-variable "branch_raw" {}
+variable "project" {}
 
 variable "branch" {}
 
-variable "repository" {}
+variable "branch_raw" {}
+
+variable "github_owner" {}
+
+variable "github_repo" {}
