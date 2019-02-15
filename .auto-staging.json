@@ -10,7 +10,7 @@
         {
             "name": "TF_VAR_github_owner",
             "type": "PLAINTEXT",
-            "value": "janritter"
+            "value": "auto-staging"
         },
         {
             "name": "TF_VAR_github_repo",
