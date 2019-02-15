@@ -93,13 +93,12 @@ resource "aws_codepipeline" "pipeline" {
     name = "Build and Deploy"
 
     action {
-      category         = "Build"
-      input_artifacts  = ["source-artifact"]
-      name             = "${aws_codebuild_project.build_demo_app.name}"
-      output_artifacts = ["build"]
-      owner            = "AWS"
-      provider         = "CodeBuild"
-      version          = "1"
+      category        = "Build"
+      input_artifacts = ["source-artifact"]
+      name            = "${aws_codebuild_project.build_demo_app.name}"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
 
       configuration {
         ProjectName = "${aws_codebuild_project.build_demo_app.name}"
