@@ -30,6 +30,7 @@ resource "aws_iam_policy" "codebuild_execution" {
        {
            "Effect": "Allow",
            "Action": [
+            "apigateway:*",
             "codebuild:*",
             "codepipeline:*",
             "iam:*",
@@ -37,6 +38,7 @@ resource "aws_iam_policy" "codebuild_execution" {
             "logs:CreateLogGroup",
             "logs:CreateLogStream",
             "logs:PutLogEvents",
+            "route53:*",
             "s3:*",
             "ssm:GetParameters"
            ],
