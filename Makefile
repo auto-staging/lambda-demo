@@ -5,7 +5,7 @@ auto-staging-apply: terraform-apply terraform-apply-deployment
 auto-staging-destroy: terraform-destroy terraform-destroy-deployment
 
 install-language:
-	apk update && apk add go && mkdir -p ${GOPATH}/bin && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+	apk update && apk add go && mkdir -p ${GOPATH}/bin && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh && mv ${GOPATH}/bin/dep /usr/bin/dep
 
 terraform-init:
 	cd terraform && \
