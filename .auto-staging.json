@@ -1,0 +1,28 @@
+{
+    "repository": "lambda-demo",
+    "infrastructureRepoURL": "https://github.com/auto-staging/lambda-demo.git",
+    "webhook": true,
+    "filters": [
+        "feat(.*)"
+    ],
+    "codeBuildRoleARN": "arn:aws:iam::171842373341:role/lambda-demo-infrastructure-codebuild-exec-role",
+    "environmentVariables": [
+        {
+            "name": "TF_VAR_github_owner",
+            "type": "PLAINTEXT",
+            "value": "janritter"
+        },
+        {
+            "name": "TF_VAR_github_repo",
+            "type": "PLAINTEXT",
+            "value": "auto-staging-demo-app"
+        },
+        {
+            "name": "GITHUB_TOKEN",
+            "type": "PARAMETER_STORE",
+            "value": "/CodeBuild/GITHUB_TOKEN"
+        }
+    ],
+    "shutdownSchedules": [],
+    "startupSchedules": []
+}
