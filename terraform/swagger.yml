@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  description: Auto Staging Lambda demo
+  version: 1.0.0
+  title: Auto Staging Lambda demo API
+
+paths:
+  /ping:
+    get:
+      summary: Receive a pong from the lambda demo
+      operationId: getPing
+      responses:
+        '200':
+          description: your pong
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        uri: 'arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/${demo_lambda_arn}/invocations'
+        credentials: '${demo_lambda_execution_role_arn}'
+        httpMethod: POST
+        responses:
+          default:
+            statusCode: '200'
+          BAD.*:
+            statusCode: '400'
+          INT.*:
+            statusCode: '500'

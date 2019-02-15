@@ -3,3 +3,7 @@
 
 # Build
 /bin
+
+# Terraform
+.terraform
+*.zip
