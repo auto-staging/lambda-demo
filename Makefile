@@ -1,11 +1,11 @@
-auto-staging-init: terraform-init terraform-init-deployment install-language
+auto-staging-init: setup-environment terraform-init terraform-init-deployment
 
 auto-staging-apply: terraform-apply terraform-apply-deployment
 
 auto-staging-destroy: terraform-destroy terraform-destroy-deployment
 
-install-language:
-	apk update && apk add go && mkdir -p ${GOPATH}/bin && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh && mv ${GOPATH}/bin/dep /usr/bin/dep
+setup-environment:
+	apt-get install golang -y --no-install-recommends && mkdir -p ${GOPATH}/bin && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh && mv ${GOPATH}/bin/dep /usr/bin/dep
 
 terraform-init:
 	cd terraform && \
