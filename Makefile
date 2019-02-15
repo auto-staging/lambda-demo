@@ -1,8 +1,11 @@
-auto-staging-init: terraform-init terraform-init-deployment
+auto-staging-init: terraform-init terraform-init-deployment install-language
 
 auto-staging-apply: terraform-apply terraform-apply-deployment
 
 auto-staging-destroy: terraform-destroy terraform-destroy-deployment
+
+install-language:
+	apk update && apk add go
 
 terraform-init:
 	cd terraform && \
