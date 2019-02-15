@@ -5,7 +5,7 @@ auto-staging-apply: terraform-apply terraform-apply-deployment
 auto-staging-destroy: terraform-destroy terraform-destroy-deployment
 
 install-language:
-	apk update && apk add go
+	apk update && apk add go && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 
 terraform-init:
 	cd terraform && \
@@ -38,5 +38,8 @@ terraform-destroy-deployment:
 	terraform workspace select ${TF_VAR_branch} && \
 	terraform destroy --auto-approve
 
-build:
-	go build -o bin/auto-staging-lambda-demo
+prepare:
+	dep ensure -v
+
+build: prepare
+		go build -o bin/auto-staging-lambda-demo
