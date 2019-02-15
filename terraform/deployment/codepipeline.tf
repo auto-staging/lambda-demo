@@ -90,7 +90,7 @@ resource "aws_codepipeline" "pipeline" {
   }
 
   stage {
-    name = "Build and Deploy"
+    name = "Build-Deploy"
 
     action {
       category        = "Build"
