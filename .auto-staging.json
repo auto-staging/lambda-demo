@@ -15,7 +15,7 @@
         {
             "name": "TF_VAR_github_repo",
             "type": "PLAINTEXT",
-            "value": "auto-staging-demo-app"
+            "value": "lambda-demo"
         },
         {
             "name": "GITHUB_TOKEN",

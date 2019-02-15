@@ -13,7 +13,7 @@ resource "aws_codebuild_project" "build_demo_app" {
 
   environment {
     compute_type    = "BUILD_GENERAL1_SMALL"
-    image           = "aws/codebuild/golang:1.10"
+    image           = "autostaging/auto-staging-codebuild:latest"
     privileged_mode = true
     type            = "LINUX_CONTAINER"
 

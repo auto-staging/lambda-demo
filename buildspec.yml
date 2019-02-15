@@ -3,5 +3,5 @@ version: 0.2
 phases:
   build:
     commands:
-      - make terraform-init
-      - make terraform-apply
+      - make auto-staging-init
+      - make auto-staging-apply

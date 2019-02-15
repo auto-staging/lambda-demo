@@ -34,10 +34,10 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
     },
     {
       "Action": [
-        "s3:*"
+        "s3:PutObject*"
       ],
       "Resource": [
-        "arn:aws:s3:::${var.repository}-${var.branch}-artifacts-bucket"
+        "arn:aws:s3:::${var.repository}-${var.branch}-artifacts-bucket*"
       ],
       "Effect": "Allow"
     },
