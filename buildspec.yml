@@ -1,7 +1,15 @@
+
 version: 0.2
             
 phases:
   build:
     commands:
+      # Copy code to folder working with go dep
+      - mkdir -p ${HOME}/go/src/github.com/auto-staging/lambda-demo
+      - mv $CODEBUILD_SRC_DIR/* ${HOME}/go/src/github.com/auto-staging/lambda-demo
+      - export CODEBUILD_SRC_DIR=${HOME}/go/src/github.com/auto-staging/lambda-demo
+      - export GOPATH=${HOME}/go
+
+      - cd $CODEBUILD_SRC_DIR
       - make auto-staging-init
       - make auto-staging-apply
