@@ -29,6 +29,7 @@ terraform-apply-deployment:
 	terraform apply --auto-approve
 
 terraform-destroy:
+	mkdir bin && \
 	cd terraform && \
 	terraform workspace select ${TF_VAR_branch} && \
 	terraform destroy --auto-approve
