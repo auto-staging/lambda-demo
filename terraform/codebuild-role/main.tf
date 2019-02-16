@@ -31,6 +31,7 @@ resource "aws_iam_policy" "codebuild_execution" {
            "Effect": "Allow",
            "Action": [
             "apigateway:*",
+            "acm:*",
             "codebuild:*",
             "codepipeline:*",
             "iam:*",
