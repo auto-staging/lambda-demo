@@ -33,22 +33,22 @@ resource "aws_lambda_permission" "apigw" {
   source_arn = "${aws_api_gateway_rest_api.gateway.execution_arn}/*/*"
 }
 
-# resource "aws_api_gateway_domain_name" "regional" {
-#   # var.regional_hostname = api-eu.example.com for eu-central-1
-#   domain_name = "${replace(var.regional_hostname, "/[.]$/", "")}"
+resource "aws_api_gateway_domain_name" "regional" {
+  domain_name = "${var.repository}-${var.branch}.janrtr.space"
 
-#   regional_certificate_arn = "<YOUR regional ACM ARN>"
-#   endpoint_configuration {
-#     types = ["REGIONAL"]
-#   }
-# }
+  regional_certificate_arn = "${data.aws_acm_certificate.cert.arn}"
 
-# resource "aws_api_gateway_base_path_mapping" "regional" {
-#   # The path, if not specified, is `/` by default
-#   api_id      = "${aws_api_gateway_rest_api.example.id}"
-#   stage_name  = "${aws_api_gateway_deployment.example.stage_name}"
-#   domain_name = "${aws_api_gateway_domain_name.regional.domain_name}"
-# }
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
+}
+
+resource "aws_api_gateway_base_path_mapping" "regional" {
+  api_id      = "${aws_api_gateway_rest_api.gateway.id}"
+  stage_name  = "${aws_api_gateway_deployment.deployment.stage_name}"
+  domain_name = "${aws_api_gateway_domain_name.regional.domain_name}"
+  base_path   = "${aws_api_gateway_deployment.deployment.stage_name}"
+}
 
 resource "aws_iam_role" "api_exec_role" {
   name = "auto-staging-lambda-demo-apigw-exec-role-${var.branch}"
