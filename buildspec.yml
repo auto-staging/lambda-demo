@@ -10,5 +10,6 @@ phases:
       - export GOPATH=${HOME}/go
 
       - cd $CODEBUILD_SRC_DIR
+      - make setup-environment
       - make terraform-init
       - make terraform-apply
