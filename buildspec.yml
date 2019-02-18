@@ -1,6 +1,5 @@
-
 version: 0.2
-            
+
 phases:
   build:
     commands:
@@ -11,5 +10,5 @@ phases:
       - export GOPATH=${HOME}/go
 
       - cd $CODEBUILD_SRC_DIR
-      - make auto-staging-init
-      - make auto-staging-apply
+      - make terraform-init
+      - make terraform-apply
